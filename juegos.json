@@ -1,0 +1,7 @@
+[
+    { "id": 1, "nombre": "Fifa 2022", "precio": 1000, "imagen":"Imagenes/fifa.jpg" },
+    { "id": 2, "nombre": "Mortal Kombat", "precio": 700, "imagen":"Imagenes/mortalKombat.png" },
+    { "id": 3, "nombre": "Spider-man", "precio": 500, "imagen":"Imagenes/spiderMan.png" },
+    { "id": 4, "nombre": "Watch Dog", "precio": 1700, "imagen":"Imagenes/wacthDog.jpg" },
+    { "id": 5, "nombre": "Call of Duty", "precio": 1700, "imagen":"Imagenes/callOfDuty.png"  }
+  ]

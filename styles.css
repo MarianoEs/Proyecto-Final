@@ -1,0 +1,57 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+  background-color: aquamarine;
+  background-image: url("Imagenes/espacio.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100%;   
+     }
+
+
+footer {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  background-color: rgb(119, 93, 50);
+    }
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+      }
+
+h1 {
+    font-family: 'Russo One', sans-serif;
+    text-shadow: 5px 5px 6px rgb(46, 12, 50);
+    color: rgb(72, 18, 251);
+    text-align: center;
+    }
+
+h3 {
+    font-weight: bold;
+  }
+
+.card {
+  width: 300px;
+  height: 20px;
+  font-family: 'Russo One', sans-serif;
+}
+
+.precioProducto {
+  font-size: 30px;
+  font-family: 'Russo One', sans-serif;
+}
+
+
+
+
+
+    

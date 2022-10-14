@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Over</title>
+    <link 
+          rel="icon" 
+          type="image/png" 
+          href="Imagenes\spaceinvasor.png" alt="icono">
+    <link 
+          rel="stylesheet" 
+          href="styles.css">
+    <link 
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" 
+          crossorigin="anonymous">
+</head>
+<body>
+
+
+    <nav class="navbar bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" style="color:white">Game Over</a>
+          
+
+          <button id="toggleMyModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+            Carrito de compras <i class="bi bi-bag-check-fill"></i>
+        </button>
+
+        </div>
+    </nav>
+
+
+      <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Carrito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="container">
+                    <div id="carrito-contenedor">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Precio</th>
+                                <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="items"></tbody>
+                            <tfoot>
+                                <tr id="footer">
+                                <th scope="row" colspan="6">Carrito vacío - comience a comprar!</th>
+                                </tr>
+                            </tfoot>
+                            </table>
+                        <div class="row" id="cards"></div>
+                    </div>
+                
+                </div>
+                <p class="precioProducto">Precio Total: $<span id="precioTotal">0</span></p>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-success">Terminar compra</button>
+                <button id="vaciar-carrito" type="button" class="btn btn-warning">Vaciar carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>     
+      
+    <h1>JUEGOS DISPONIBLES</h1>
+    
+<section id="content-juego">
+  
+</section>
+
+<div class="card mb-3" style="max-width: 540px;">
+  
+</div>
+
+  <footer class="container-fluid bg-4 text-center">
+    <h6>Game Over By Mariano Esser</h6>
+  </footer>
+
+<script src="./index.js"></script>
+<script 
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous">
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+</html>
