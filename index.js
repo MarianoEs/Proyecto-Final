@@ -26,6 +26,8 @@ const botonVaciar = document.getElementById('vaciar-carrito');
 
 const precioTotal = document.getElementById('precioTotal')
 
+const cantidadTotal = document.getElementById('cantidadTotal')
+
 
 document.addEventListener('DOMContentLoaded',() => {
     if (localStorage.getItem('carrito')) {
@@ -114,8 +116,18 @@ juegos.forEach((juego) => {
 //Carrito
 
 const agregarAlCarrito = (juegoId) => {
-    const item = juegos.find((juego) => juego.id === juegoId)
-    carrito.push(item)
+    const existe = carrito.some (juego => juego.id === juegoId)
+    if (existe) {
+        const juego = carrito.map (juego => {
+            if (juego.id === juegoId){
+                juego.cantidad++
+            }
+        })
+    } else {
+        const item = juegos.find((juego) => juego.id === juegoId)
+        carrito.push(item)
+    }
+
     actualizarCarrito()
 };
 
@@ -131,13 +143,15 @@ const actualizarCarrito = () => {
     contenedorCarrito.innerHTML = ""
 
     carrito.forEach((juego) => {
+       
         let {nombre, precio, id} = juego; //Desestructuración
 
         const div = document.createElement('div')
         div.className = ('juegoEnCarrito')
         div.innerHTML = `
         <p> ${nombre}</p>
-        <p>Precio: ${precio}</p>
+        <p>Precio: $ ${precio}</p>
+        <p>Cantidad: <span id="cantidad">${juego.cantidad}</span></p>
         <button onClick = "eliminarDelCarrito (${id})" "button type="button" class="btn btn-primary">Eliminar<i class=fas fa-shopping-cart"></i></button>       
         `
         contenedorCarrito.appendChild(div)
@@ -154,7 +168,7 @@ const actualizarCarrito = () => {
 
 
 
-//<p>Cantidad: <span id="cantidad">${cantidad}</span></p>
+//
 /*
 function crearCard(Juego) {
     let cuerpoCarta = document.createElement("div");
