@@ -2,7 +2,8 @@
 let nombre = "";
 let precio = "";
 let cuotas = "";
-let lugarjuego=0;
+let lugarjuego = 0;
+
 
 const juegos = [];
 let carrito = [];
@@ -26,7 +27,9 @@ const botonVaciar = document.getElementById('vaciar-carrito');
 
 const precioTotal = document.getElementById('precioTotal')
 
-const cantidadTotal = document.getElementById('cantidadTotal')
+const cantidad = document.getElementById('cantidad')
+
+
 
 
 document.addEventListener('DOMContentLoaded',() => {
@@ -116,20 +119,20 @@ juegos.forEach((juego) => {
 //Carrito
 
 const agregarAlCarrito = (juegoId) => {
-    const existe = carrito.some (juego => juego.id === juegoId)
+    const existe = carrito.some((juego) => juego.id === juegoId);
     if (existe) {
-        const juego = carrito.map (juego => {
-            if (juego.id === juegoId){
-                juego.cantidad++
-            }
-        })
+      const juegoExistente = carrito.find((juego) => {
+        return juego.id === juegoId;
+      }); // Buscas el juego en el array de carrito
+      juegoExistente.cantidad++; // le sumas 1 a la cantidad
     } else {
-        const item = juegos.find((juego) => juego.id === juegoId)
-        carrito.push(item)
+      const item = juegos.find((juego) => juego.id === juegoId);
+      item.cantidad++; // Si es un juego nuevo, la cantidad que era 0, la pones en 1
+      carrito.push(item);
     }
-
-    actualizarCarrito()
-};
+  
+    actualizarCarrito();
+  };
 
 const eliminarDelCarrito = (juegoId) => {
     const item = carrito.find((juego) => juego.id === juegoId)
