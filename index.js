@@ -55,7 +55,7 @@ function cargarJuego() {
         .then(res => res.json())
         .then(data => {
             data.forEach(juego => {
-                juegos.push(juego);
+                juegos.push({ ...juego, cantidad: 0 });
                 let {id, nombre, precio, imagen} = juego;
                 const div = document.createElement('div');
                 div.classList.add('card')
@@ -119,16 +119,19 @@ juegos.forEach((juego) => {
 //Carrito
 
 const agregarAlCarrito = (juegoId) => {
-    const existe = carrito.some((juego) => juego.id === juegoId);
-    if (existe) {
-      const juegoExistente = carrito.find((juego) => {
+    const juegoEnCarrito = carrito.find((juego) => {
+      return juego.id === juegoId;
+    });
+    const datosJuego = {...juegos.find((juego) => {
         return juego.id === juegoId;
-      }); // Buscas el juego en el array de carrito
-      juegoExistente.cantidad++; // le sumas 1 a la cantidad
+      })
+    };
+  
+    if (juegoEnCarrito) {
+      juegoEnCarrito.cantidad++;
+      juegoEnCarrito.precio = datosJuego.precio * juegoEnCarrito.cantidad;
     } else {
-      const item = juegos.find((juego) => juego.id === juegoId);
-      item.cantidad++; // Si es un juego nuevo, la cantidad que era 0, la pones en 1
-      carrito.push(item);
+      carrito.push(datosJuego);
     }
   
     actualizarCarrito();
@@ -159,8 +162,10 @@ const actualizarCarrito = () => {
         `
         contenedorCarrito.appendChild(div)
 
-        localStorage.setItem('carrito', JSON.stringify(carrito))
     })
+
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+
     precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.precio, 0)
 };
 
