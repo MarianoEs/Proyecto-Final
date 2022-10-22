@@ -29,6 +29,8 @@ const precioTotal = document.getElementById('precioTotal')
 
 const cantidad = document.getElementById('cantidad')
 
+const botonTerminar = document.getElementById('terminarCompra');
+
 
 
 
@@ -44,6 +46,7 @@ botonVaciar.addEventListener('click', () => {
     localStorage.clear()
     actualizarCarrito()
 });
+
 
 //ejecuciones de funciones
 cargarJuego(); 
@@ -167,72 +170,23 @@ const actualizarCarrito = () => {
     localStorage.setItem('carrito', JSON.stringify(carrito))
 
     precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.precio, 0)
+
 };
 
-
-
-
-
-
-
-
-//
-/*
-function crearCard(Juego) {
-    let cuerpoCarta = document.createElement("div");
-    cuerpoCarta.className = "card";
-    cuerpoCarta.innerHTML = `
-        <h5>${Juego.nombre} </h5>
-        <p>$ ${Juego.precio} USD</p>
-    `;
-    cuerpoCarta.append(botonAgregar);
-};
-
-function dibujarCatalogoJuegos() {
-    contenedorJuegos.innerHTML = "";
-
-    juegos.forEach(
-        (juegos) => {
-            let contenedorCarta = crearCard(juegos);
-            contenedorJuegos.append(contenedorCarta);
-        }
-    );
-};
-
-const buscarjuego = juegos.find((juegos) => juegos.nombre === nombre);
-
-function dividir (cuotas){
-
-    precio = buscarjuego.precio;
-
-    switch(cuotas){
-        case 3: 
-        return precio / cuotas;
-        break;
-        case 6: 
-        return precio / cuotas * 0.20;
-        break;
-        case 12: 
-        return precio / cuotas * 0.20;
-        break;
-        default: 
-        return 0;
-        break;
+botonTerminar.addEventListener('click',() => {
+    if ( carrito.length === 0 ){
+        swal({                              
+            title: "¡Algo anda mal!",
+            text: "¡el carrito esta vacio!", 
+            icon: "error",
+        })
+    } else {
+        swal({                              
+            title: "¡Genial!",
+            text: "¡La compra se realizó con éxito!", 
+            icon: "success",
+        })
     }
-}; 
+});
 
 
-cuotas = parseInt(prompt("ingrese cantidad de cuotas 3, 6 o 12 (6 y 12 interes del 20 %"));
-let resultado = dividir(cuotas);
-
-let factura1 = document.getElementById('modal');
-factura1.innerHTML = "<h2> El total de su compra es: </h2>" + "$" + resultado;
-document.body.appendChild(factura1);
-
-const respuesta = () => {
-    alert("¡Gracias por su compra!");
-  }
-  let boton = document.getElementById("comprar");
-  boton.addEventListener("click", respuesta);
-
-  */
